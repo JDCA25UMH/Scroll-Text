@@ -18,6 +18,9 @@ for parte in text:gmatch("[^\t]+")do
 color(00)
 print(parte,x,yy)
 yy=yy+8
+    if text:find("\t\t")then
+      yy=yy+8
+    end
 end
 end
 function _update(dt)
