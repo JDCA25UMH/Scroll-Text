@@ -7,29 +7,40 @@ end
 text=""
 lins= {}
 local scroll = 0 
-local lh = 6
+local lh =8
 function textoreal(text,x,y)
-
+buffer = {}
 text = text
 x= x
 y = y 
 local yy = y  
 
 for parte in text:gmatch("[^\t]+")do
+table.insert(buffer,parte)
 
 color(00)
+
 print(parte,x,yy)
 yy=yy+8
 if text:find("\t\t")then
-      yy=yy+8
-    end
+yy=yy+8
 end
+end
+
 end
 function _update(dt)
-if btnp(4)then
-math.max(0,scroll-6)
+if btnp(3)then
+
+scroll =scroll+(1*#buffer)
+elseif btnp(4) then 
+scroll =scroll+( -1*#buffer)
 end
+if scroll>0 then scroll = 0 end
+
+
 end
+
+
 function _textinput(t)
 text= text..t
 end
@@ -39,19 +50,24 @@ if tecla=="backspace"then
 text= text:sub(1,-2)
 elseif tecla == "tab"then
 text = text.."\t"
+
 end
 end
 
 function _draw()
 clear()
-clip(100,12,80,100)
-pushMatrix()
-cam("translate",0,1)
 color(06)
-rect(100,10,80,100)
+rect(100,10,80,97)
+
+clip(100,12,80,97)
+pushMatrix()
+cam("translate",0,scroll )
+
 tex_real =textoreal(text,103,12)
 popMatrix()
 clip()
+color(02)
+
 end
 ___tilemap___
 LK12;TILEMAP;144x128;
