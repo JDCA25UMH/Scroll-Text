@@ -5,9 +5,9 @@ local i = 1
 local accum = {}
 local bin = {}
 while decimal >= 1 do   
-        dec_bin = decimal % 2
+        dec_bin_num  = decimal % 2
    decimal = math.floor(decimal / 2)
-     accum[i] = dec_bin
+     accum[i] = dec_bin_num
      i = i +1
 end
 a= 1
