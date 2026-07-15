@@ -34,7 +34,7 @@ end
 
 ---NOT MASK 
 
-local position = 20
+local position = 19 
 local mask = math.pow(2,position )
 function dec_bin(decimal)
     local i =0
@@ -56,20 +56,20 @@ function dec_bin(decimal)
     end
     
     function ceros(position)
-     local num_cero = 21-position
+     local num_cero = 21-position-1
      tb = {}
      for i= num_cero,1,-1 do 
        table.insert(tb,"0")
      end
 
 
-    return tb
+    return table.concat(tb)
     end
     
 
-bin = table.unpack(dec_bin(mask))
+bin = dec_bin(mask)
 cero_01 = ceros(position)
-
+bin_op = table.concat(bin)
 function uno(cero_01)
     tb_1 ={}
     
@@ -121,7 +121,7 @@ function reverse(bin)
 --status_flag
 
 tb01= uno(cero_01)
-tb02=reverse(bin)
+tb02=reverse(bin_op)
 --tamaño de la tabla 1 de not mask
 num_01 = {}
 
